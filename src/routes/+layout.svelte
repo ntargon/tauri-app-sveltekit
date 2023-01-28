@@ -1,11 +1,17 @@
-<script>
+<script lang="ts">
   import "../app.css";
   import { page } from '$app/stores';
   import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
   import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte'
+  import { settings_store } from "$lib/Settings";
+  import { onMount } from "svelte";
   $: activeUrl = $page.url.pathname
-</script>
 
+  onMount(async () => {
+    await settings_store.init();
+  });
+
+</script>
 
 <div class="relative px-4">
   <Navbar
@@ -34,6 +40,7 @@
             <SidebarGroup>
               <SidebarItem label="Home" href='/' active={activeUrl === '/'} />
               <SidebarItem label="Utils" href='/utils' active={activeUrl === '/utils'} />
+              <SidebarItem label={$settings_store.count.toString()} href='/' active={activeUrl === '/utils'} />
             </SidebarGroup>
           </SidebarWrapper>
         </Sidebar>
