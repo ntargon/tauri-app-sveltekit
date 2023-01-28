@@ -38,7 +38,7 @@
           </SidebarWrapper>
         </Sidebar>
       </aside>
-      <main class="container ml-72">
+      <main class="container ml-72 w-auto">
         <slot />
       </main>
     </div>
