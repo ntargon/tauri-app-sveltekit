@@ -32,8 +32,8 @@
         <Sidebar class="w-60">
           <SidebarWrapper>
             <SidebarGroup>
-              <SidebarItem label="Dashboard" href='/dashboard' active={activeUrl === '/dashboard'} />
-              <SidebarItem label="Sidebar" href='/component/sidebar' active={activeUrl === '/components/sidebar'} />
+              <SidebarItem label="Home" href='/' active={activeUrl === '/'} />
+              <SidebarItem label="Utils" href='/utils' active={activeUrl === '/utils'} />
             </SidebarGroup>
           </SidebarWrapper>
         </Sidebar>

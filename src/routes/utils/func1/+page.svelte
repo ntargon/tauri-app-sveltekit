@@ -2,4 +2,4 @@
   import { Heading } from 'flowbite-svelte';
 </script>
 
-<Heading>Home</Heading>
+<Heading>Func1</Heading>

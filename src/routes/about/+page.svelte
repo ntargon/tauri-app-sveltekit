@@ -1,1 +1,5 @@
-<h1>About</h1>
+<script>
+  import { Heading } from 'flowbite-svelte';
+</script>
+
+<Heading>About</Heading>
