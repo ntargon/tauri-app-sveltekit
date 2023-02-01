@@ -2,11 +2,10 @@
   import { Heading } from 'flowbite-svelte'
   import { Tooltip } from 'flowbite-svelte';
   import { A } from 'flowbite-svelte';
-  import { page } from '$app/stores';
 </script>
 
 <Heading>Utils</Heading>
 
 <A class="font-medium hover:underline" href="/utils/func1">func1</A>
 <Tooltip>Func1についての説明が入ります</Tooltip>
-{JSON.stringify($page.data.hoge)}
+<A class="font-medium hover:underline" href="/utils/fs">fs</A>
