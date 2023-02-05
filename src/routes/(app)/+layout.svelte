@@ -11,12 +11,11 @@
     await settings_store.init();
   });
 
-  const hoge = async () => {
-    console.log("hoge");
-    const webview = new WebviewWindow('a', {
+  const openSettings = async () => {
+    const webview = new WebviewWindow('settings', {
       url: '/settings'
     });
-    console.log(webview);
+    webview.show();
   };
 
 </script>
@@ -34,7 +33,7 @@
     <NavHamburger on:click={toggle} />
     <NavUl {hidden}>
       <NavLi href="/">Home</NavLi>
-      <NavLi ><Button size="xs" on:click={hoge}>Setting</Button></NavLi>
+      <NavLi ><Button size="xs" on:click={openSettings}>Setting</Button></NavLi>
     </NavUl>
   </Navbar>
   <div class="overflow-scroll pb-16 pt-20 max-h-screen">

@@ -30,44 +30,10 @@
         "exists": true
       },
       "dialog": {
-        "all": false,
-        "ask": true,
-        "confirm": false,
-        "message": false,
-        "open": true,
-        "save": false
+        "all": true
       },
       "window": {
-        "all": false,
-        "center": false,
-        "close": false,
-        "create": true,
-        "hide": false,
-        "maximize": false,
-        "minimize": false,
-        "print": false,
-        "requestUserAttention": false,
-        "setAlwaysOnTop": false,
-        "setCursorGrab": false,
-        "setCursorIcon": false,
-        "setCursorPosition": false,
-        "setCursorVisible": false,
-        "setDecorations": false,
-        "setFocus": false,
-        "setFullscreen": false,
-        "setIcon": false,
-        "setIgnoreCursorEvents": false,
-        "setMaxSize": false,
-        "setMinSize": false,
-        "setPosition": false,
-        "setResizable": false,
-        "setSize": false,
-        "setSkipTaskbar": false,
-        "setTitle": false,
-        "show": false,
-        "startDragging": false,
-        "unmaximize": false,
-        "unminimize": false
+        "all": true
       }
     },
     "bundle": {
@@ -111,11 +77,20 @@
     },
     "windows": [
       {
+        "label": "main",
         "fullscreen": false,
         "height": 600,
         "resizable": true,
         "title": "tauri-app-sveltekit",
         "width": 800
+      },
+      {
+        "label": "settings",
+        "height": 400,
+        "width": 400,
+        "title": "settings",
+        "url": "/settings",
+        "visible": false
       }
     ]
   }
