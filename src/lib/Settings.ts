@@ -6,7 +6,7 @@ type Settings = {
   regs: number[];
 };
 
-export function createSettingsStore() {
+function createSettingsStore() {
     const default_settings: Settings = {
         count: 0,
         regs: [],

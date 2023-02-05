@@ -4,11 +4,15 @@
   import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte'
   import { settings_store } from "$lib/Settings";
   import { onMount } from "svelte";
-  import { WebviewWindow } from '@tauri-apps/api/window';
+  import { exit } from '@tauri-apps/api/process';
+  import { appWindow, WebviewWindow } from '@tauri-apps/api/window';
   $: activeUrl = $page.url.pathname
 
   onMount(async () => {
     await settings_store.init();
+    appWindow.onCloseRequested(async (event) => {
+     await exit(0);
+    });
   });
 
   const openSettings = async () => {

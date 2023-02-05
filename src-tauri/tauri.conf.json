@@ -17,6 +17,12 @@
         "all": false,
         "open": true
       },
+      "process": {
+        "all": false,
+        "exit": true,
+        "relaunch": false,
+        "relaunchDangerousAllowSymlinkMacos": false
+      },
       "fs": {
         "all": true,
         "readFile": true,
