@@ -1,15 +1,13 @@
 import { writable } from 'svelte/store'
 import { Store } from "tauri-plugin-store-api";
-
-type Settings = {
-  count: number;
-  regs: number[];
-};
+import type { Settings } from './api-types';
+import { validateSettings } from './api-types.validator';
 
 function createSettingsStore() {
     const default_settings: Settings = {
         count: 0,
         regs: [],
+        hoge: false
     };
 
     const { subscribe, set} = writable<Settings>(default_settings);
@@ -19,18 +17,10 @@ function createSettingsStore() {
         subscribe,
 
         init: async () => {
-            const res = await store.get<Settings>("settings");
-            console.log(res);
-
-            if(res !== null) {
-                if (res.count === undefined) {
-                    res.count = 0;
-                }
-                if (res.regs === undefined) {
-                    res.regs = [];
-                }
-
-                set(res);
+            try {
+                set(validateSettings(await store.get("settings")));
+            } catch {
+                set(default_settings)
             }
         },
 

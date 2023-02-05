@@ -1,6 +1,6 @@
 <script>
   import { Heading, Button, ButtonGroup, Card, Checkbox } from 'flowbite-svelte';
-  import { settings_store } from "$lib/Settings";
+  import { settings_store } from "$lib/store/settings";
   import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
 </script>
 

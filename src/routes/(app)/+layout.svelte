@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import { Button, Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
   import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte'
-  import { settings_store } from "$lib/Settings";
+  import { settings_store } from "$lib/store/settings";
   import { onMount } from "svelte";
   import { exit } from '@tauri-apps/api/process';
   import { appWindow, WebviewWindow } from '@tauri-apps/api/window';
