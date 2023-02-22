@@ -3,13 +3,11 @@
   import { appWindow } from '@tauri-apps/api/window';
   import { onMount, onDestroy } from 'svelte';
   import type { UnlistenFn } from '@tauri-apps/api/event';
-
+  import { register, unregisterAll } from '@tauri-apps/api/globalShortcut';
   let filename = "";
 
-  let unlisten: UnlistenFn;
-
   onMount(async ()=> {
-      unlisten = await appWindow.onFileDropEvent((event) => {
+    const unlisten = await appWindow.onFileDropEvent((event) => {
       if (event.payload.type === 'hover') {
           console.log('User hovering', event.payload.paths);
       } else if (event.payload.type === 'drop') {
@@ -20,12 +18,20 @@
       } else {
           console.log('File drop cancelled');
       }
-      });
+    });
+
+
+    await unregisterAll();
+    await register("Shift+Space", () => {
+      console.log('Shortcut triggered');
+
+    });
   })
 
-  onDestroy(async ()=> {
-      unlisten();
+  onDestroy(async () => {
+    await unregisterAll();
   })
+
 
   onMount(async () => {
     await appWindow.onCloseRequested(async (event) => {
