@@ -3,6 +3,29 @@
 	import {dndzone} from 'svelte-dnd-action';
 	import {flip} from 'svelte/animate';
     import {Button} from 'flowbite-svelte';
+
+    import { appWindow } from "@tauri-apps/api/window";
+    import { onDestroy, onMount } from 'svelte';
+    import type { UnlistenFn } from '@tauri-apps/api/event';
+
+    let unlisten: UnlistenFn;
+
+    onMount(async ()=> {
+        unlisten = await appWindow.onFileDropEvent((event) => {
+        if (event.payload.type === 'hover') {
+            console.log('User hovering', event.payload.paths);
+        } else if (event.payload.type === 'drop') {
+            console.log('User dropped', event.payload.paths);
+        } else {
+            console.log('File drop cancelled');
+        }
+        });
+    })
+
+    onDestroy(async ()=> {
+        unlisten();
+    })
+
     let itemsData = [
         {
             id: 0,

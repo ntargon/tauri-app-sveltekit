@@ -1,7 +1,28 @@
-<script>
+<script lang="ts">
   import { Heading, Button, ButtonGroup, Card, Checkbox } from 'flowbite-svelte';
   import { settings_store } from "$lib/store/settings";
   import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
+  import { appWindow } from "@tauri-apps/api/window";
+  import { onDestroy, onMount } from 'svelte';
+  import type { UnlistenFn } from '@tauri-apps/api/event';
+
+  let unlisten: UnlistenFn;
+
+  onMount(async ()=> {
+    unlisten = await appWindow.onFileDropEvent((event) => {
+      if (event.payload.type === 'hover') {
+        console.log('User hovering', event.payload.paths);
+      } else if (event.payload.type === 'drop') {
+        console.log('User dropped', event.payload.paths);
+      } else {
+        console.log('File drop cancelled');
+      }
+    });
+  })
+
+  onDestroy(async ()=> {
+    unlisten();
+  })
 </script>
 
 <Heading>Home</Heading>
